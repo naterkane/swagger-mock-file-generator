@@ -1,5 +1,5 @@
 {
-  "name": "swagger-mock-file-generator",
+  "name": "@naterkane/swagger-mock-file-generator",
   "version": "1.2.1",
   "description": "A generator of mock file base on swagger yaml or JSON",
   "main": "dist/index",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whq731/swagger-mock-file-generator.git"
+    "url": "git+https://github.com/naterkane/swagger-mock-file-generator.git"
   },
   "keywords": [
     "swagger",
@@ -18,9 +18,10 @@
   ],
   "dependencies": {
     "babel-polyfill": "^6.9.1",
+    "circular-json": "^0.5.1",
+    "flatted": "^2.0.0",
     "swagger-mock-parser": "^1.2.0",
-    "swagger-jsblade-swagger-parser": "4.0.0-beta.2",
-    "circular-json": "^0.5.1"
+    "swagger-parser": "^6.0.5"
   },
   "devDependencies": {
     "babel": "^5.6.14",
@@ -29,7 +30,7 @@
   "author": "weihanqing",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/whq731/swagger-mock-file-generator/issues"
+    "url": "https://github.com/naterkane/swagger-mock-file-generator/issues"
   },
-  "homepage": "https://github.com/whq731/swagger-mock-file-generator#readme"
+  "homepage": "https://github.com/naterkane/swagger-mock-file-generator#readme"
 }

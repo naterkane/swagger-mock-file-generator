@@ -1,7 +1,7 @@
 import fs from 'fs';
-import swaggerParser from 'swagger-jsblade-swagger-parser';
+import swaggerParser from 'swagger-parser';
 import mockParser from 'swagger-mock-parser';
-import circularJson from 'circular-json';
+import { stringify } from 'flatted';
 // babel-polyfill only can be imported once
 if (!global._babelPolyfill) {
     require('babel-polyfill');
@@ -46,8 +46,8 @@ export default function(swaggerFile, mockFile, cb) {
         fs.writeFile(mockFile || 'swaggerWithMock.json', JSON.stringify(api, function(key, value) {
             if (typeof value === 'object' && value !== null) {
                 if (cache.indexOf(value) !== -1) {
-                    // Circular reference found, use circularJson.stringify to break
-                    return JSON.parse(circularJson.stringify(value));
+                    // Circular reference found, use flatted's stringify to break
+                    return JSON.parse(stringify(value));
                 }
                 // Store value in our collection
                 cache.push(value);

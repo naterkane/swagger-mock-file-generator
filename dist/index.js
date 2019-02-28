@@ -10,17 +10,15 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _swaggerJsbladeSwaggerParser = require('swagger-jsblade-swagger-parser');
+var _swaggerParser = require('swagger-parser');
 
-var _swaggerJsbladeSwaggerParser2 = _interopRequireDefault(_swaggerJsbladeSwaggerParser);
+var _swaggerParser2 = _interopRequireDefault(_swaggerParser);
 
 var _swaggerMockParser = require('swagger-mock-parser');
 
 var _swaggerMockParser2 = _interopRequireDefault(_swaggerMockParser);
 
-var _circularJson = require('circular-json');
-
-var _circularJson2 = _interopRequireDefault(_circularJson);
+var _flatted = require('flatted');
 
 // babel-polyfill only can be imported once
 if (!global._babelPolyfill) {
@@ -32,7 +30,7 @@ exports['default'] = function (swaggerFile, mockFile, cb) {
         throw new Error('missing swagger file path');
     }
     var parserPromise = new Promise(function (resolve) {
-        _swaggerJsbladeSwaggerParser2['default'].dereference(swaggerFile, function (err, swagger) {
+        _swaggerParser2['default'].dereference(swaggerFile, function (err, swagger) {
             if (err) throw err;
             resolve(swagger);
         });
@@ -68,8 +66,8 @@ exports['default'] = function (swaggerFile, mockFile, cb) {
                 _fs2['default'].writeFile(mockFile || 'swaggerWithMock.json', JSON.stringify(api, function (key, value) {
                     if (typeof value === 'object' && value !== null) {
                         if (cache.indexOf(value) !== -1) {
-                            // Circular reference found, use circularJson.stringify to break
-                            return JSON.parse(_circularJson2['default'].stringify(value));
+                            // Circular reference found, use flatted's stringify to break
+                            return JSON.parse((0, _flatted.stringify)(value));
                         }
                         // Store value in our collection
                         cache.push(value);

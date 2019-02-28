@@ -215,6 +215,14 @@ parameters:
 #                                           Paths                              #
 ################################################################################
 paths:
+  /example:
+    get:
+      responses:
+        200:
+          description: an example response
+          examples:
+            application/json:
+              $ref: './example.json'
   /users/{user-id}:
     parameters:
       - $ref: '#/parameters/user-id'
