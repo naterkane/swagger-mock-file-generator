@@ -18,7 +18,6 @@
   ],
   "dependencies": {
     "babel-polyfill": "^6.9.1",
-    "circular-json": "^0.5.1",
     "flatted": "^2.0.0",
     "swagger-mock-parser": "^1.2.0",
     "swagger-parser": "^6.0.5"
